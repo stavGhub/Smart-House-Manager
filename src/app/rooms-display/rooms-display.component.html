@@ -1,0 +1,39 @@
+<h2>My Rooms</h2>
+<ul class="rooms">
+  <li *ngFor="let room of rooms" 
+  (click)="onSelect(room)"
+  [class.selected]="room === selectedRoom">
+    <span class="badge">{{room.id}}</span> {{room.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedRoom">
+  <h2>{{selectedRoom.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedRoom.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedRoom.name" placeholder="name"/>
+    </label>
+    <br/>
+    <label>add product:
+        <input #productName placeholder="product"/><span (click)="addProduct(selectedRoom.id, productName.value)">Add </span>
+    </label>
+    <br/>
+    <label>product list:
+        <ul>
+          <li *ngFor="let product of selectedRoom.getProducts()"> 
+            {{product.getName()}} ==
+            {{product.getState()}} ==
+            {{product.getId()}} ==
+            <span *ngIf="product.getState() === false; else turnedOff">
+              <span (click)="product.turnOn()">Turn On == </span>
+            </span>
+            <ng-template #turnedOff>
+              <span (click)="product.turnOff()">Turn Off == </span>
+            </ng-template>
+            <span (click)="removeProduct(selectedRoom.id, product.getId())"> Delete </span>
+          </li>
+        </ul>
+    </label>
+  </div>
+</div>
