@@ -19,12 +19,14 @@
         <input #productName placeholder="product"/><span (click)="addProduct(selectedRoom.id, productName.value)">Add </span>
     </label>
     <br/>
-    <label>product list:
+    <label>product list: <span (click)="selectedRoom.turnOffAll()">Turn Off All ==</span>
+      <span (click)="selectedRoom.turnOnAll()"> Turn On All</span>
         <ul>
           <li *ngFor="let product of selectedRoom.getProducts()"> 
-            {{product.getName()}} ==
-            {{product.getState()}} ==
-            {{product.getId()}} ==
+            Name: {{product.getName()}} ==
+            State: {{product.getState()}} ==
+            Run Time: {{product.getRunTime()}} ==
+            ID: {{product.getId()}} ==
             <span *ngIf="product.getState() === false; else turnedOff">
               <span (click)="product.turnOn()">Turn On == </span>
             </span>

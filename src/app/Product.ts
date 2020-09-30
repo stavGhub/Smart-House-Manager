@@ -29,6 +29,7 @@ export class Product {
 
   turnOn(): void {
     this.state = true;
+    this.runTime = this.runTime+1;
   }
 
   turnOff(): void {

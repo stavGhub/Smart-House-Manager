@@ -32,4 +32,20 @@ export class Room {
       return prod.getId() != id;
     });
   }
+
+  turnOffAll(): void {
+    for (const prod of this.prodList) {
+      if (prod.getState() == true) {
+        prod.turnOff();
+      };
+    }
+  }
+
+  turnOnAll(): void {
+    for (const prod of this.prodList) {
+      if (prod.getState() == false) {
+        prod.turnOn();
+      };
+    }
+  }
 }
