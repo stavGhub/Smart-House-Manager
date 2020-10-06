@@ -24,6 +24,14 @@ removeProduct(roomId: number, prodId: number) {
   this.roomManager.removeProduct(roomId, prodId)
 }
 
+turnOffAll(roomId: number) {
+  this.roomManager.turnOffAll(roomId);
+}
+
+turnOnAll(roomId: number) {
+  this.roomManager.turnOnAll(roomId);
+}
+
   private rooms: Room[];
 
   constructor(private roomManager:RoomManagerService, private idGenerator:IdGeneratorService) { }

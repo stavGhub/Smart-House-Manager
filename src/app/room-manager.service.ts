@@ -23,9 +23,9 @@ export class RoomManagerService {
     room.removeProduct(productId);
   }
 
-  getRoom(id: number) : Room {
+  getRoom(roomId: number) : Room {
     let filteredRooms: Room[] = this.rooms.filter((room) => {
-      return room.getId() === id;
+      return room.getId() === roomId;
     });
 
     return filteredRooms[0];
@@ -33,5 +33,15 @@ export class RoomManagerService {
 
   getRooms() : Room[] {
     return this.rooms;
+  }
+
+  turnOffAll(roomId: number) : void {
+    let room = this.getRoom(roomId);
+    room.turnOffAll();
+  }
+
+  turnOnAll(roomId: number) : void {
+    let room = this.getRoom(roomId);
+    room.turnOnAll();
   }
 }

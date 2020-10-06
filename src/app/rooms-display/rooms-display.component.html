@@ -19,8 +19,8 @@
         <input #productName placeholder="product"/><span (click)="addProduct(selectedRoom.id, productName.value)">Add </span>
     </label>
     <br/>
-    <label>product list: <span (click)="selectedRoom.turnOffAll()">Turn Off All ==</span>
-      <span (click)="selectedRoom.turnOnAll()"> Turn On All</span>
+    <label>product list: <span (click)="turnOffAll(selectedRoom.id)">Turn Off All ==</span>
+      <span (click)="turnOnAll(selectedRoom.id)"> Turn On All</span>
         <ul>
           <li *ngFor="let product of selectedRoom.getProducts()"> 
             Name: {{product.getName()}} ==
